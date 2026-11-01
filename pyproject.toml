@@ -1,0 +1,9 @@
+[project]
+name = "embodied-ai"
+version = "0.1.0"
+description = "Embodied AI / VLA project built on LeRobot"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+# LeRobot is installed editable from third_party/lerobot by the setup scripts,
+# so both machines run exactly the commit pinned by the submodule.
+dependencies = []
