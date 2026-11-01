@@ -8,7 +8,7 @@ export PATH="$HOME/.local/bin:$PATH"
 command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
 uv venv --python 3.12 .venv
 # No system ffmpeg on this server, so install pyav (bundles ffmpeg) as the video fallback.
-uv pip install --python .venv/bin/python -e "third_party/lerobot[dataset,av-dep,training,pusht,aloha]"
+uv pip install --python .venv/bin/python -e "third_party/lerobot[dataset,av-dep,training,diffusion,pusht,aloha]"
 # Later: add smolvla for SmolVLA fine-tuning
 # Headless sim rendering: export MUJOCO_GL=egl before running lerobot-eval.
 
