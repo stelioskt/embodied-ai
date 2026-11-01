@@ -6,8 +6,8 @@ cd "$(dirname "$0")/../.."
 git submodule update --init --recursive
 command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
 uv venv --python 3.12 .venv
-uv pip install --python .venv/bin/python -e third_party/lerobot
-# Sim extras: -e "third_party/lerobot[pusht,aloha]"
+uv pip install --python .venv/bin/python -e "third_party/lerobot[dataset,training,pusht,aloha]"
+# Later: add smolvla for SmolVLA fine-tuning
 
 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader
 .venv/bin/python -c "import lerobot, torch; print('lerobot', lerobot.__version__, '| torch', torch.__version__, '| cuda', torch.cuda.is_available())"

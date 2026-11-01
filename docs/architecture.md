@@ -26,6 +26,12 @@
 2. Train ACT on the server from that dataset, run it on the robot.
 3. SmolVLA fine-tuning on the server (small batch / LoRA to fit 16 GB). Rent a GPU only if needed.
 
+## Setup notes
+
+- Laptop: `torchcodec` fails to load on Windows (checked with LeRobot v0.6.1, torch 2.11 CPU).
+  LeRobot detects this and uses `pyav` instead, so the laptop installs the `av-dep` extra.
+- The server extras in `scripts/server/setup.sh` are untested until it is run on the server.
+
 ## Open items
 
 - Laptop CPU inference speed is untested (decided by Phase 0).
