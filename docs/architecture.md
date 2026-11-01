@@ -34,5 +34,8 @@
 
 ## Open items
 
-- Laptop CPU inference speed is untested (decided by Phase 0).
+- Laptop CPU inference (`scripts/laptop/time_inference.py act`): ACT, 51.6M params, PushT input
+  (one 384x384 camera): median 49 ms, p95 66 ms per forward pass. Promising, but the SO-101 setup
+  uses two cameras at higher resolution, so re-measure with the real input shapes.
+- Experiment tracking: LeRobot 0.6 uses Trackio (local, free), not W&B; a W&B account is optional.
 - Hugging Face free-plan private storage limits are unchecked.
