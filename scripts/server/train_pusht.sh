@@ -33,5 +33,6 @@ lerobot-train \
   --env_eval_freq="$EVAL_FREQ" \
   --eval.n_episodes="$EVAL_EPISODES" \
   --eval.batch_size="$EVAL_EPISODES" \
+  --eval.use_async_envs=false \
   --save_freq="$STEPS" \
   --trackio.enable=false
