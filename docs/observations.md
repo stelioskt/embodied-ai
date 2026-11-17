@@ -69,3 +69,53 @@ The migration process also highlighted the importance of model configuration, no
 - How do these task-specific policies compare with vision-language-action models?
 
 These observations provide a starting point for further experiments and analysis. They are not intended as a final assessment of the project or an end-of-week reflection.
+
+## 7. Vision-Language-Action Models: OpenVLA and π0
+
+After experimenting with a task-specific Diffusion Policy, I studied OpenVLA and π0 to understand how robotic policies can extend beyond individual tasks.
+
+### OpenVLA
+
+OpenVLA combines visual observations and natural-language instructions to predict robot actions. It uses a pretrained vision-language architecture adapted for robotic control.
+
+A key characteristic is **action tokenization**: continuous action dimensions are discretized into 256 bins and represented as tokens that the language model predicts.
+
+This allows action generation to be formulated similarly to language generation, although discretization introduces a trade-off between representation precision and simplicity.
+
+### π0
+
+π0 also combines visual observations and language instructions, but uses a different approach to action generation.
+
+It extends a pretrained vision-language model with an **action expert** that uses flow matching to generate continuous action sequences.
+
+Unlike OpenVLA's discrete action representation, π0 generates continuous actions through an iterative process that transforms noise into a predicted action trajectory.
+
+This is conceptually related to the generative Diffusion Policy used in PushT, although the underlying training objectives and architectures differ.
+
+### Comparison with PushT Diffusion Policy
+
+| Aspect | PushT Diffusion Policy | OpenVLA | π0 |
+|---|---|---|---|
+| Inputs | Images, agent state | Images, language | Images, language, robot state |
+| Action representation | Continuous | Discretized tokens | Continuous |
+| Action generation | Diffusion | Autoregressive token prediction | Flow matching |
+| Task scope | Task-specific | Multitask robotics | Multitask robotics |
+| Pretraining | Task demonstrations | Vision-language and diverse robot data | Vision-language and diverse robot data |
+
+The main distinction is between learning a policy for a specific manipulation task and developing a general-purpose policy capable of interpreting instructions and transferring knowledge across robotic tasks.
+
+### Connections to Previous Experiments
+
+The PushT experiments highlighted the importance of predicting appropriate action sequences and maintaining stable control during execution.
+
+OpenVLA and π0 introduce additional capabilities through large-scale pretraining, multimodal representations, and diverse robotic demonstrations. However, these capabilities do not eliminate the need for accurate low-level control.
+
+An interesting connection is the relationship between **action chunking and feedback frequency**. This was already relevant to my PushT experiments and remains important in more advanced VLA architectures.
+
+### Questions for Further Investigation
+
+- How does discretizing actions affect the precision of robotic manipulation?
+- What are the practical differences between diffusion and flow matching?
+- How does language conditioning improve generalization to new tasks?
+- How can a pretrained VLA model be adapted to a new robot?
+- Can the instability observed in PushT be reduced through more frequent feedback or improved action prediction?
